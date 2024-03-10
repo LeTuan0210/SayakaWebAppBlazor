@@ -1,0 +1,47 @@
+﻿<!-- Menu  -->
+
+<section class="menu" id="menu">
+
+    <div class="heading">
+        <span>Menu</span>
+        <h3></h3>
+    </div>
+
+    <div class="box-container">
+
+        @foreach (MenuBuffet menu in menuBuffets)
+        {
+            <a href="#" class="box">
+                <img src=@menu.Image alt="">
+                <div class="content">
+                    <h3>@menu.Name</h3>
+                    <div class="price">@ShowMoney(menu.Price) VNĐ / Người</div>
+                </div>
+            </a>
+        }
+    </div>
+
+</section>
+
+<!-- End Menu -->
+@code {
+    [Parameter] public List<MenuBuffet> menuBuffets { get; set; } = new();
+    string ShowMoney(int Sotien)
+    {
+        string money = Sotien.ToString();
+        string result = "";
+        if (money != null)
+        {
+            for (int i = 0; i < money.Length; i++)
+            {
+                if ((money.Length - i) % 3 == 0 && i != 0)
+                {
+                    result += ".";
+                }
+                result += money[i];
+            }
+            return result;
+        }
+        else { return "0"; }
+    }
+}

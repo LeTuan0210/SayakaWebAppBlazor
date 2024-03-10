@@ -1,0 +1,20 @@
+﻿@page "/"
+@inject ApplicationDbContext DB
+
+<PageTitle>Sayaka - Buffet Nướng lẩu Nhật Bản</PageTitle>
+
+<Introduction />
+
+<HomeMenu menuBuffets="menuBuffets" />
+
+<Gallery />
+
+<Reservation />
+
+@code{
+    List<MenuBuffet> menuBuffets {get; set;} = new();
+    protected override async Task OnInitializedAsync()
+    {
+        menuBuffets = await DB.menuBuffets.ToListAsync();
+    }
+}
