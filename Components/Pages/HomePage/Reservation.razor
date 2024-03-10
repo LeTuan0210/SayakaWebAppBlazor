@@ -57,7 +57,7 @@
             </div>
             <div class="inputBox">
                 <span>Ngày đến</span>
-                <input type="datetime-local">
+                <InputDate @bind-Value="Day" />
             </div>
         </div>
 
@@ -69,5 +69,5 @@
 
 <!-- Order end-->
 @code {
-
+    DateOnly Day { get; set; }
 }

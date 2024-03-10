@@ -11,12 +11,19 @@
 
         @foreach (MenuBuffet menu in menuBuffets)
         {
-            <a href="#" class="box">
+            bool Show = false;
+            <a href="/menu" class="box" @onclick="(() => ShowMenuFunction(Show))">
                 <img src=@menu.Image alt="">
                 <div class="content">
                     <h3>@menu.Name</h3>
                     <div class="price">@ShowMoney(menu.Price) VNĐ / Người</div>
                 </div>
+                @if (Show)
+                {
+                    <div>
+                        <h3>Hiện</h3>
+                    </div>
+                }
             </a>
         }
     </div>
@@ -26,6 +33,7 @@
 <!-- End Menu -->
 @code {
     [Parameter] public List<MenuBuffet> menuBuffets { get; set; } = new();
+    bool ShowMenu = false;
     string ShowMoney(int Sotien)
     {
         string money = Sotien.ToString();
@@ -43,5 +51,9 @@
             return result;
         }
         else { return "0"; }
+    }
+    void ShowMenuFunction(bool Show)
+    {
+        Show = !Show;
     }
 }

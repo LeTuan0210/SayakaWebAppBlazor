@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -45,7 +44,7 @@ section {
 }
 
     .heading span {
-        font-family: 'Satisfy', cursive;
+        font-family: "Dancing Script", cursive;
         font-size: 3rem;
         color: red;
     }
@@ -234,7 +233,7 @@ section {
     }
 
         .about .content span {
-            font-family: 'Satisfy', cursive;
+            font-family: "Dancing Script", cursive;
             font-size: 3rem;
             color: red;
         }
@@ -296,60 +295,20 @@ section {
     .popular .box-container .box {
         border-radius: .5rem;
         position: relative;
-        background: #f7f7f7;
         padding: 2rem;
         text-align: center;
     }
 
-        .popular .box-container .box .fa-heart {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 2.5rem;
-            color: #666;
-            cursor: pointer;
-        }
-
-            .popular .box-container .box .fa-heart:hover {
-                color: red;
-            }
-
-        .popular .box-container .box .image {
-            margin: 1rem 0;
-        }
-
             .popular .box-container .box .image img {
-                height: 15rem;
+                width: 300px;
+                height: 200px;
             }
 
-        .popular .box-container .box .content h3 {
-            font-size: 2rem;
+        .popular .box-container .box .content p{
+            font-size: 1.8rem;
             color: #130f40;
+            padding: 0.5rem;
         }
-
-        .popular .box-container .box .content .stars {
-            padding: 1rem 0;
-            font-size: 1.7rem;
-        }
-
-            .popular .box-container .box .content .stars i {
-                color: gold;
-            }
-
-            .popular .box-container .box .content .stars span {
-                color: #666;
-            }
-
-        .popular .box-container .box .content .price {
-            font-size: 2rem;
-            color: #130f40;
-        }
-
-            .popular .box-container .box .content .price span {
-                font-size: 1.5rem;
-                color: #666;
-                text-decoration: line-through;
-            }
 
 
 .menu .box-container {
@@ -631,6 +590,10 @@ section {
 
     section {
         padding: 2rem;
+    }
+    .popular .box-container .box .image img {
+        width: 300px;
+        height: 200px
     }
 }
 

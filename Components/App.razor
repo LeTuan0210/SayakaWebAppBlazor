@@ -10,13 +10,44 @@
     <link rel="stylesheet" href="SayakaWebApp.styles.css" />
     <link rel="icon" type="image/png" href="~/Sayaka.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script language="javascript">
+        let navbar = document.querySelector('.header .navbar');
+
+        document.querySelector('#menu-btn').onclick = () => {
+            navbar.classList.toggle('active');
+            searchForm.classList.remove('active');
+            cart.classList.remove('active');
+            loginForm.classList.remove('active');
+        }
+
+        window.onscroll = () => {
+            navbar.classList.remove('active');
+        }
+
+        document.querySelector('.home').onmousemove = (e) => {
+
+            let x = (window.innerWidth - e.pageX * 2) / 90;
+            let y = (window.innerHeight - e.pageY * 2) / 90;
+
+            document.querySelector('.home .home-parallax-img').style.transform = `translateX(${y}px) translateY(${x}px)`;
+        }
+
+        document.querySelector('.home').onmouseleave = () => {
+
+            document.querySelector('.home .home-parallax-img').style.transform = `translateX(0px) translateY(0px)`;
+        }
+    </script>
     <HeadOutlet @rendermode="RenderModeForPage" />
 </head>
 
 <body>
-    <Routes @rendermode="RenderModeForPage" />    
-    <script src="~/js/script.js"></script>
+    <Routes @rendermode="RenderModeForPage" />
     <script src="_framework/blazor.web.js"></script>
+    <script>
+        window.changeTitle = async ("Xin chao") => {
+            document.title = "Xin chao";
+        };
+    </script>
 </body>
 
 </html>

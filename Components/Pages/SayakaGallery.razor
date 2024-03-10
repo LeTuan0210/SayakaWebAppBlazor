@@ -1,5 +1,5 @@
-﻿<!-- Home  -->
-
+﻿@page "/gallery"
+@attribute [StreamRendering]
 <section class="home" id="home">
 
     <div class="content">
@@ -10,14 +10,25 @@
             Đây là một nét văn hóa tao nhã, độc đáo, đã làm mê mẩn nhiều thực khách trên nhiều quốc gia.
             Đỉnh cao của nghệ thuật chế biến và thưởng thức món ăn hết sức tinh tế của đất nước này.
         </p>
-        <a href="#" class="btn">Đặt bàn ngay</a>
+        @if (!ShowHome)
+        {
+            <button class="btn" @onclick="DoiTrangThai">Xem Ảnh Nhà hàng</button>
+        }
+        else
+        {
+            <button class="btn" @onclick="DoiTrangThai">Ẩn bớt hình ảnh</button>
+        }
     </div>
 
     <div class="image">
         <img src="img/AnhWebp/Slide/SayakaSlide1.webp" alt="" class="home-img">
     </div>
-
 </section>
+
+@if (Allfile.Count > 0 && ShowHome)
+{
+    <SayakaWebApp.Components.Pages.GalleryPage.GetImage pathImage="Allfile" />
+}
 
 <!-- End  -->
 <!-- About  -->
@@ -38,7 +49,29 @@
 
 </section>
 
-<!-- End About -->
 @code {
-
+    List<string> Allfile { get; set; } = new();
+    bool ShowHome = false;
+    bool ShowAbout = false;
+    protected override void OnInitialized()
+    {
+        string n = @"wwwroot/img/gallery";
+        Allfile = Directory.GetFiles(n).ToList();
+        Allfile = GetFilename(Allfile);
+    }
+    List<string> GetFilename(List<string> Filename)
+    {
+        List<string> ketqua = new List<string>();
+        @foreach(var item in Filename)
+        {
+            string tmp = item.Remove(0, 8);
+            tmp = tmp.Replace("\\", "/");
+            ketqua.Add(tmp);
+        }
+        return ketqua;
+    }
+    void DoiTrangThai()
+    {
+        ShowHome = !ShowHome;
+    }
 }

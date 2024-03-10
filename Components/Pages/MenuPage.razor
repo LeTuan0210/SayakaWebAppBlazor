@@ -1,0 +1,35 @@
+﻿@page "/Menu"
+@inject ApplicationDbContext DB
+<section class="popular" id="popular">
+
+    <div class="heading">
+        <span>Menu Sayaka Buffet</span>
+        <h4 style="font-size:larger">Buffet đa dạng, phong phú 80+ món ăn từ thịt tươi ngọt mềm, hải sản tươi sống, rau xanh thanh đạm:</h4>
+    </div>
+
+    <div class="box-container">
+        @foreach(MenuBuffet menu in menuBuffets)
+        {
+            <div class="box">
+                <div class="image">
+                    <img src=@menu.Image alt="">
+                </div>
+                <div class="content">
+                    <p>@menu.Name</p>
+                    <p>@menu.Description</p>
+                </div>
+            </div>
+        }
+    </div>
+
+</section>
+
+<!-- End Popular -->
+
+@code {
+    List<MenuBuffet> menuBuffets { get; set; } = new();
+    protected override async Task OnInitializedAsync()
+    {
+        menuBuffets = await DB.menuBuffets.ToListAsync();
+    }
+}
